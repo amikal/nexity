@@ -24,31 +24,31 @@ class ContactRepository extends \Doctrine\ORM\EntityRepository
         return $result;
     }
 
-//    public function ajaxFindCar(Request $request)
-//    {
-//        $expr = new Expr();
-//
-//        $result = $this->createQueryBuilder('c')
-//            ->select('c.type, c.id')
-//            ->where($expr->like('c.type', ':type'))
-//            ->setParameter('type', sprintf('%s%%', $request->query->get('q', '')))
-//            ->getQuery()
-//            ->getArrayResult();
-//
-//        return $result;
-//    }
-//
-//    public function ajaxGetCar($îds)
-//    {
-//        $expr = new Expr();
-//
-//        $result = $this->createQueryBuilder('c')
-//            ->select('c.id, c.type')
-//            ->where($expr->in('c.id', ':ids'))
-//            ->setParameter('ids', $ids)
-//            ->getQuery()
-//            ->getArrayResult();
-//
-//        return $result;
-//    }
+    public function ajaxFindContact(Request $request)
+    {
+        $expr = new Expr();
+
+        $result = $this->createQueryBuilder('c')
+            ->select('c.code_postal, c.id')
+            ->where($expr->like('c.code_postal', ':cp'))
+            ->setParameter('cp', sprintf('%s%%', $request->query->get('q', '')))
+            ->getQuery()
+            ->getArrayResult();
+
+        return $result;
+    }
+
+    public function ajaxGetContact($îds)
+    {
+        $expr = new Expr();
+
+        $result = $this->createQueryBuilder('c')
+            ->select('c.id, c.code_postal')
+            ->where($expr->in('c.id', ':ids'))
+            ->setParameter('ids', $ids)
+            ->getQuery()
+            ->getArrayResult();
+
+        return $result;
+    }
 }

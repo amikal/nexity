@@ -1,5 +1,64 @@
 {% extends "::base.html.twig" %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var urlFind = Routing.generate('find_contact_ajax');
+
+            $('#contact_code_postal').select2({
+                placeholder: "Entrez le code postal",
+                minimumInputLength: 1,
+                tags: true,
+                ajax: {
+                    url: urlFind,
+                    dataType: 'json',
+                    delay: 250,
+                    method: 'GET',
+                    data: function (params) {
+                        return {
+                            q: params.term, // les termes de la requête
+                        };
+                    },
+                    processResults: function (data, params) {
+                        // le résultat est formatté via la librairie pour un
+                        // affichage correct côté utilisateur.
+                        return {
+                            results: data,
+                        };
+                    },
+                },
+                createTag: function (params) {
+                    return {
+                        id: params.term,
+                        text: params.term,
+                        newOption: true
+                    }
+                },
+                templateResult: function(data) {
+                    // Le template de présentation du résultat de la
+                    // recherche. Il s'agit de la liste des éléments
+                    // correspondant à la recherche. Ici on veut le titre des posts.
+                    if (data.loading) return data.text;
+
+                    // Gestion de l'ajout de la donnée
+                    if (data.newOption) return data.text;
+
+                    return data.code_postal;
+                },
+                templateSelection: function(data) {
+                    // Affichage de l'item sélectionné.
+                    // Sinon affichage du placeholder (data.text).
+                    if (data.code_postal) return data.code_postal;
+
+                    return data.text;
+                },
+            });
+        });
+    </script>
+{% endblock %}
+
 {% block form %}
     {% include "NexityFrontBundle:Includes:form.html.twig" %}
 {% endblock %}

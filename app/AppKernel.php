@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new Nexity\RestBundle\NexityRestBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new AntQa\AjaxAutoCompleteBundle\AntQaAjaxAutoCompleteBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

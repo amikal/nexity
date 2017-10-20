@@ -7,12 +7,17 @@
             </label>
         </div>
     </div>
-    <div class="grid-1-3"><label class="txtright">{{ form_label(form.nom) }}*</label>{{ form_widget(form.nom) }}</div>
+<div class="grid-1-3">
+    <label class="txtright">{{ form_label(form.nom) }}*</label>{{ form_widget(form.nom) }}</div>
+    <div class="errormsg">{{ form_errors(form.nom) }}</div>
     <div class="grid-1-3"><label class="txtright">{{ form_label(form.prenom) }}*</label>{{ form_widget(form.prenom) }}</div>
-    <div class="grid-1-3"><label class="txtright">{{ form_label(form.code_postal) }}*</label>{{ form_widget(form.code_postal) }}
-    </div>
+    <div class="errormsg">{{ form_errors(form.nom) }}</div>
+<div class="grid-1-3"><label class="txtright">{{ form_label(form.code_postal) }}*</label><select id="contact_code_postal" name="contact[code_postal]" required="required"></select>
+    </div><div class="errormsg">{{ form_errors(form.code_postal) }}</div>
     <div class="grid-1-3"><label class="txtright">{{ form_label(form.email) }}*</label>{{ form_widget(form.email) }}</div>
+    <div class="errormsg">{{ form_errors(form.email) }}</div>
     <div class="grid-1-3"><label class="txtright">{{ form_label(form.telephone) }}*</label>{{ form_widget(form.telephone) }}</div>
+    <div class="errormsg">{{ form_errors(form.telephone) }}</div>
     <p>{{ form_label(form.optin_nexity) }}</p>
     <div class="grid-3-1 no-label">
         <div class="grid-2 radio"><label>{{ form_widget(form.optin_nexity) }}</label>

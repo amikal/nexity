@@ -6,3 +6,9 @@ Nexity\BackBundle\Entity\Contact:
             - NotBlank: ~
         prenom:
             - NotBlank: ~
+        code_postal:
+            - NotBlank: ~
+        email:
+            - NotBlank: ~
+        telephone:
+            - NotBlank: ~

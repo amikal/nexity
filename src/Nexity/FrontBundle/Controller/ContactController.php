@@ -43,4 +43,25 @@ class ContactController extends Controller
 
        return $this->render('NexityFrontBundle:Contact:success.html.twig');
     }
+
+    /**
+     * @Route("/find", options = { "expose" = true }, name = "find_contact_ajax")
+     */
+    public function findAction(Request $request)
+    {
+        $contacts = $this->get('contact_manager')->ajaxFindContact($request);
+        return new JsR($contacts);
+    }
+
+    /**
+     * @Route("/get/{ids}", options = { "expose" = true }, name = "get_contact_ajax")
+     */
+    public function getAction($ids)
+    {
+        $expr = new Expr();
+        $ids = explode(',', $ids);
+
+        $contacts = $this->get('contact_manager')->ajaxGetContact($ids);
+        return new JsR($contacts);
+    }
 }

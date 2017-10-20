@@ -3,7 +3,7 @@
 namespace Nexity\BackBundle\Services;
 
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 class ContactManager
 {
@@ -33,6 +33,16 @@ class ContactManager
     public function find($id)
     {
         return $this->repository->find($id);
+    }
+
+    public function ajaxFindContact(Request $request)
+    {
+        return $this->repository->ajaxFindContact($request);
+    }
+
+    public function ajaxGetContact($ids)
+    {
+        return $this->repository->ajaxGetContact($ids);
     }
 
 }
