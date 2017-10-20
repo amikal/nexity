@@ -1,0 +1,8 @@
+Nexity\BackBundle\Entity\Contact:
+    properties:
+        civilite:
+            - NotBlank: ~
+        nom:
+            - NotBlank: ~
+        prenom:
+            - NotBlank: ~

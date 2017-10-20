@@ -1,4 +1,7 @@
+parameters:
+    contact.manager.class: Nexity\BackBundle\Services\ContactManager
+
 services:
-#    nexity_back.example:
-#        class: Nexity\BackBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    contact_manager:
+        class: %contact.manager.class%
+        arguments: [@doctrine.orm.entity_manager]

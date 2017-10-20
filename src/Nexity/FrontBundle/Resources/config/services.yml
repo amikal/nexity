@@ -1,4 +1,26 @@
+parameters:
+    contact.form.type.class: Nexity\FrontBundle\Form\Type\ContactType
+    contact.handler.class: Nexity\FrontBundle\Form\Handler\ContactHandler
+    contact.manager.class: Nexity\BackBundle\Services\ContactManager
+    symfony.form.class: Symfony\Component\Form\Form
+
 services:
-#    nexity_front.example:
-#        class: Nexity\FrontBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    contact_form:
+        factory_service: form.factory
+        factory_method: createNamed
+        class: %symfony.form.class%
+        arguments:
+            - contact
+            - contact_form
+            - null
+            - { action: '/contacts'}
+
+    contact_form_type:
+        class: %contact.form.type.class%
+        tags:
+            - { name: form.type, alias: contact_form }
+
+    contact_handler:
+        class: %contact.handler.class%
+        arguments: [@contact_form, @request, @contact_manager, @validator]
+        scope: request

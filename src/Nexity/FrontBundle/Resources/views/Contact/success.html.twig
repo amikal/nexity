@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    {{ parent() }}
+
+    {% block highlight %}
+        <h2><ul>
+                {% for notification in app.session.flashbag.get('notifications') %}
+                    <li>{{ notification }}</li>
+                {% endfor %}
+            </ul>
+        </h2>
+    {% endblock %}
+{% endblock %}
