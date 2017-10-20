@@ -1,12 +1,11 @@
 nexity_rest:
     resource: "@NexityRestBundle/Controller/"
-    type:     annotation
-    prefix:   /
+    type:     rest
 
 nexity_back:
     resource: "@NexityBackBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /back
 
 nexity_front:
     resource: "@NexityFrontBundle/Controller/"

@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new Nexity\FrontBundle\NexityFrontBundle(),
             new Nexity\BackBundle\NexityBackBundle(),
             new Nexity\RestBundle\NexityRestBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

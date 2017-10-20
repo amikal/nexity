@@ -5,9 +5,29 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/nexityfront/css/style.css') }}"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('bundles/nexityfront/js/jquery.js') }}"></script>
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="form flex-container-v">
+        {% block body %}
+            <header class="main">
+                <h1>
+                    <a href="#">
+                        <img src="{{ asset('bundles/nexityfront/img/logo-nexity.png') }}" alt="Logo Nexity">
+                        <span></span>Une belle vie immobilière
+                    </a>
+                </h1>
+                <h2><a href="#"> Un projet immobilier ? Déposez-nous votre demande en cliquant ici</a><h2>
+            </header>
+            <div id="container" class="flex-container">
+                <div id="cover">
+                    <div class="pin">
+                        <img src="{{ asset('bundles/nexityfront/img/pin-large-text.png') }}" alt="Les clefs de votre financement se trouvent ici">
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
