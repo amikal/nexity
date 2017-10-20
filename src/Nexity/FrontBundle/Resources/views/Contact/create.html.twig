@@ -5,6 +5,8 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
+            $('#contact_code_postal').replaceWith('<select id="contact_code_postal" name="contact[code_postal]"></select>');
+
             var urlFind = Routing.generate('find_contact_ajax');
 
             $('#contact_code_postal').select2({
