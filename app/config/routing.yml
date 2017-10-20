@@ -1,3 +1,15 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+nexity_rest:
+    resource: "@NexityRestBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+nexity_back:
+    resource: "@NexityBackBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+nexity_front:
+    resource: "@NexityFrontBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
