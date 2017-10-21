@@ -29,23 +29,10 @@ class ContactRepository extends \Doctrine\ORM\EntityRepository
         $expr = new Expr();
 
         $result = $this->createQueryBuilder('c')
-            ->select('c.code_postal, c.id')
+            ->select('c.code_postal')
             ->where($expr->like('c.code_postal', ':cp'))
+            ->groupBy('c.code_postal')
             ->setParameter('cp', sprintf('%s%%', $request->query->get('q', '')))
-            ->getQuery()
-            ->getArrayResult();
-
-        return $result;
-    }
-
-    public function ajaxGetContact($îds)
-    {
-        $expr = new Expr();
-
-        $result = $this->createQueryBuilder('c')
-            ->select('c.id, c.code_postal')
-            ->where($expr->in('c.id', ':ids'))
-            ->setParameter('ids', $ids)
             ->getQuery()
             ->getArrayResult();
 
