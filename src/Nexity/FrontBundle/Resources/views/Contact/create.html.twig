@@ -8,6 +8,7 @@
             $('#contact_code_postal').replaceWith('<select id="contact_code_postal" name="contact[code_postal]"></select>');
 
             var urlFind = Routing.generate('find_contact_ajax');
+            var $element = $('#contact_code_postal').select2()
 
             $('#contact_code_postal').select2({
                 placeholder: "Entrez le code postal",
@@ -24,8 +25,20 @@
                         };
                     },
                     processResults: function (data, params) {
-                        // le résultat est formatté via la librairie pour un
-                        // affichage correct côté utilisateur.
+                        for (var d = 0; d < data.length; d++) {
+                            var item = data[d];
+                            item.id = item.code_postal;
+
+                            // Create the DOM option that is pre-selected by default
+                            var option = new Option(item.code_postal, item.id, true, true);
+
+                            // Append it to the select
+                            $element.append(option);
+                        }
+
+                        // Update the selected options that are displayed
+                        $element.trigger('change');
+
                         return {
                             results: data,
                         };
@@ -39,21 +52,15 @@
                     }
                 },
                 templateResult: function(data) {
-                    // Le template de présentation du résultat de la
-                    // recherche. Il s'agit de la liste des éléments
-                    // correspondant à la recherche. Ici on veut le titre des posts.
                     if (data.loading) return data.text;
 
-                    // Gestion de l'ajout de la donnée
                     if (data.newOption) return data.text;
 
                     return data.code_postal;
                 },
                 templateSelection: function(data) {
-                    // Affichage de l'item sélectionné.
-                    // Sinon affichage du placeholder (data.text).
                     if (data.code_postal) return data.code_postal;
-
+                    
                     return data.text;
                 },
             });
