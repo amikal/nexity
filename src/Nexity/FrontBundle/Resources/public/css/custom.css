@@ -1,1 +1,26 @@
 .errormsg{width:100%;color:red;}
+
+body.form form button[type=submit] {
+    background-color: #D01C34;
+    border-radius: 2em;
+    font-size: 1.2em;
+    font-style: italic;
+    color: #FFF;
+    padding: 10px 48px;
+    margin: 25px 25px 0 0;
+    -webkit-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+}
+
+.mentions{
+    margin: 25px 0 0 0;
+}
+
+#cp .select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 20px;
+    width: 192px;
+    margin: 8px 0 0 14px;
+    height: 35px;
+}

@@ -4,6 +4,7 @@ namespace Nexity\FrontBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -41,7 +42,7 @@ class ContactType extends AbstractType
                'choices_as_values' => true,
                'label' => 'Souhaitez-vous recevoir les offres de nos partenaires',
            ))
-           ->add('submit', 'submit')
+           ->add('submit', SubmitType::class, ['label' => 'Valider'])
            ;
     }
 

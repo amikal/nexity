@@ -7,10 +7,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="{{ asset('bundles/nexityfront/css/style.css') }}"/>
         <link rel="stylesheet" href="{{ asset('bundles/nexityfront/css/custom.css') }}"/>
-        <script
-                src="https://code.jquery.com/jquery-3.2.1.min.js"
-                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-                crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.full.min.js"></script>
         <script type="text/javascript" src="{{ asset('bundles/nexityfront/js/script.js') }}"></script>
@@ -26,17 +23,16 @@
                         <span></span>Une belle vie immobilière
                     </a>
                 </h1>
-                {% block highlight %}
-                <a href="{{ path('nexity_front_contact_create') }}"> Un projet immo ? cliquez ici</a>
-                {% endblock %}
             </header>
             <div id="container" class="flex-container">
                 <div id="cover">
                     <div class="pin">
                         <img src="{{ asset('bundles/nexityfront/img/pin-large-text.png') }}" alt="Les clefs de votre financement se trouvent ici">
                     </div>
-                    <div class="text txtcenter"><em>Remplissez notre formulaire en ligne pour bénéficier de l’offre</em><strong>Découvrez
-                            les programmes correspondant à votre projet d’achat dans le neuf</strong>
+                    <div class="text txtcenter">
+                        <em><a href="{{ path('nexity_front_contact_create') }}">Remplissez notre formulaire en ligne pour bénéficier de l’offre</a></em>
+                        {% block highlight %} <a href="{{ path('nexity_front_contact_create') }}"> Un projet immo ? cliquez ici</a>{% endblock %}
+                        <strong>Découvrez les programmes correspondant à votre projet d’achat dans le neuf</strong>
                     </div>
                 </div>
                 {% block form %}{% endblock %}

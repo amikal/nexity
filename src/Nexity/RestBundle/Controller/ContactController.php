@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\View\View; // Utilisation de la vue de FOSRestBundle
 
+/**
+ * Class ContactController
+ * @package Nexity\RestBundle\Controller
+ */
 class ContactController extends Controller
 {
     /**
@@ -34,18 +38,10 @@ class ContactController extends Controller
     {
         $contactFormHandler = $this->get('contact_handler');
 
-        dump($contactFormHandler);
-
         if($contactFormHandler->process()) {
             return $this->redirect($this->generateUrl('nexity_front_contact_contactsuccess'));
         }
 
-        dump($contactFormHandler->getErrors());
-
         return $this->render('NexityFrontBundle:Contact:create.html.twig', ['form' => $contactFormHandler->createView(), 'errors' => $contactFormHandler->getErrors()]);
-
-//        return array(
-//            'form' => $carFormHandler->createView(),
-//        );
     }
 }
